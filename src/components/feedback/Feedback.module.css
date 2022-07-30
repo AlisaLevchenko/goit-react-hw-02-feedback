@@ -33,7 +33,7 @@ button {
 .goodBtn {
   font-size: 20px;
   font-weight: 500;
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
 }
 
 .neutralBtn {
@@ -44,4 +44,11 @@ button {
 .badBtn {
   font-size: 10px;
   background-color: rgb(236, 106, 83);
+}
+
+.notification {
+  font-size: 20px;
+  font-weight: 500;
+  color: #727272;
+  text-align: center;
 }

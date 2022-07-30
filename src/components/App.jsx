@@ -1,11 +1,10 @@
 import Feedback from './feedback/Feedback';
-import { Statistics } from './statistics/Statistics';
+// import Statistics from './statistics/Statistics';
 
 export const App = () => {
   return (
     <div>
       <Feedback />
-      <Statistics />
     </div>
   );
 };

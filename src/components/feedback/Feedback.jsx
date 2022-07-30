@@ -1,55 +1,78 @@
-// import PropTypes from 'prop-types';
 import { Component } from 'react';
 
+import Controls from '../controls/Controls';
 import Statistics from '../statistics/Statistics';
+import NotificationMessage from '../notificationMessage/NotificationMessage';
 import s from './Feedback.module.css';
 
 class Feedback extends Component {
-  // state = {
-  //   goodCount: 0,
-  //   neutralCount: 0,
-  //   badCount: 0,
-  // };
+  state = {
+    countGoodFB: 0,
+    countNeutralFB: 0,
+    countBadFB: 0,
+  };
+
+  handleGoodFB = () => {
+    this.setState(prevValue => {
+      return { countGoodFB: prevValue.countGoodFB + 1 };
+    });
+  };
+  handleNeutralFB = () => {
+    this.setState(prevValue => {
+      return { countNeutralFB: prevValue.countNeutralFB + 1 };
+    });
+  };
+  handleBadFB = () => {
+    this.setState(prevValue => {
+      return { countBadFB: prevValue.countBadFB + 1 };
+    });
+  };
+
+  handleTotalFB = () => {
+    const totalFB =
+      this.state.countGoodFB +
+      this.state.countNeutralFB +
+      this.state.countBadFB;
+    return totalFB;
+  };
+  handlePositiveFBPers = () => {
+    if (this.handleTotalFB() === 0) {
+      return 0;
+    } else {
+      const positiveFBPercentage =
+        (100 / this.handleTotalFB()) * this.state.countGoodFB;
+      return positiveFBPercentage;
+    }
+  };
 
   render() {
+    this.handleTotalFB();
+    this.handlePositiveFBPers();
+
     return (
-      <div className={s.container}>
+      <section className={s.container}>
         <h1 className={s.title}>Please leave your feedback</h1>
         <div className={s.btn}>
-          <button
-            onClick={() => {
-              console.log('click on goodBtn');
-            }}
-            type="button"
-            className={s.goodBtn}
-          >
-            Good
-          </button>
-          <button
-            onClick={() => {
-              console.log('click on neutralBtn');
-            }}
-            type="button"
-            className={s.neutralBtn}
-          >
-            Neutral
-          </button>
-          <button
-            onClick={() => {
-              console.log('click on badBtn');
-            }}
-            type="button"
-            className={s.badBtn}
-          >
-            Bad
-          </button>
+          <Controls
+            onGood={this.handleGoodFB}
+            onNeutral={this.handleNeutralFB}
+            onBad={this.handleBadFB}
+          />
         </div>
-      </div>
+
+        {this.handleTotalFB() ? (
+          <Statistics
+            goodFB={this.state.countGoodFB}
+            neutralFB={this.state.countNeutralFB}
+            badFB={this.state.countBadFB}
+            totalFB={this.handleTotalFB()}
+            positivPersrntFB={this.handlePositiveFBPers()}
+          />
+        ) : (
+          <NotificationMessage title="There is no feedback yet :(" />
+        )}
+      </section>
     );
   }
 }
 export default Feedback;
-
-// Feedback.propTypes = {
-//   title: PropTypes.string,
-// };

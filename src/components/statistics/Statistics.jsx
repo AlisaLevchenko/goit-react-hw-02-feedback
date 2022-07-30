@@ -1,27 +1,28 @@
-// import { Component } from 'react';
 import s from './Statistics.module.css';
 
-export function Statistics() {
+function Statistics(props) {
+  const { goodFB, neutralFB, badFB, totalFB, positivPersrntFB } = props;
   return (
-    <div className={s.container}>
-      <h1 className={s.title}>Statistics</h1>
+    <div>
+      <h2 className={s.title}>Statistics</h2>
       <ul className={s.statisticList}>
         <li className={s.statisticItem}>
-          <p>Good: 0</p>
+          <p>Good: {goodFB}</p>
         </li>
         <li className={s.statisticItem}>
-          <p>Neutral: 0</p>
+          <p>Neutral: {neutralFB}</p>
         </li>
         <li className={s.statisticItem}>
-          <p>Bad: 0</p>
+          <p>Bad: {badFB}</p>
         </li>
         <li className={s.statisticItem}>
-          <p>Total: 0</p>
+          <p>Total: {totalFB}</p>
         </li>
         <li className={s.statisticItem}>
-          <p>Positive feedback: 0%</p>
+          <p>Positive feedback: {Math.round(positivPersrntFB)}%</p>
         </li>
       </ul>
     </div>
   );
 }
+export default Statistics;
