@@ -1,10 +1,10 @@
-import Feedback from './feedback/Feedback';
+import Section from './section/Section';
 // import Statistics from './statistics/Statistics';
 
 export const App = () => {
   return (
     <div>
-      <Feedback />
+      <Section />
     </div>
   );
 };

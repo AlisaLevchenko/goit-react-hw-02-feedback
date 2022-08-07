@@ -10,16 +10,10 @@
   box-shadow: 5px 5px 10px rgb(0 0 0 / 7%);
 }
 
-.title {
-  margin-bottom: 10px;
-  text-align: center;
-}
-
 button {
   cursor: pointer;
   margin-bottom: 30px;
   border: none;
-  margin-right: 10px;
   width: 100px;
   height: 50px;
   text-align: center;
@@ -27,28 +21,28 @@ button {
   padding: 0;
   box-shadow: 5px 5px 10px rgb(0 0 0 / 15%);
 }
-.btn {
-  text-align: center;
-}
-.goodBtn {
-  font-size: 20px;
-  font-weight: 500;
-  /* background-color: aquamarine; */
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
 }
 
-.neutralBtn {
+.buttons:not(:last-child) {
+  margin-right: 10px;
+}
+
+.Good {
+  font-size: 20px;
+  font-weight: 500;
+  background-color: aquamarine;
+}
+
+.Neutral {
   font-size: 16px;
   background-color: burlywood;
 }
 
-.badBtn {
+.Bad {
   font-size: 10px;
   background-color: rgb(236, 106, 83);
-}
-
-.notification {
-  font-size: 20px;
-  font-weight: 500;
-  color: #727272;
-  text-align: center;
 }
